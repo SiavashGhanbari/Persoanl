@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zarpin Gold Checkout · Siavash Ghanbari</title>
+  <meta name="description" content="Case study: redesigning Zarpin's gold purchase flow to remove a false finish line and a hidden manual step.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>(function(){var t=null;try{t=new URLSearchParams(location.search).get('theme')}catch(e){}if(t!=='dark'&&t!=='light'){try{t=localStorage.getItem('theme')}catch(e){}}if(t!=='dark'&&t!=='light'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}})()</script>
+  <link rel="icon" href="avatar.webp">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="pillnav-wrap">
+    <nav class="pillnav" aria-label="Primary">
+      <span class="pill-dot" aria-hidden="true"></span>
+      <span class="pill-sep" aria-hidden="true"></span>
+      <a href="index.html">home</a>
+      <a href="index.html#work">work</a>
+      <a href="index.html#contact">contact</a>
+      <span class="pill-sep" aria-hidden="true"></span>
+      <button class="pill-theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero">
+      <div class="wrap">
+        <a class="back" href="index.html"><span aria-hidden="true">←</span> All work</a>
+        <p class="eyebrow">Zarpin · Digital gold app</p>
+        <h1>Paid is not <span class="serif">purchased</span>: fixing Zarpin's gold checkout</h1>
+        <p class="hero-lede" style="opacity:1;animation:none">Zarpin lets 400K+ users buy gold from their phone. The app looked polished, but the buy flow had two places where users thought they were done when they weren't.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Product Designer</dd></div>
+          <div><dt>Scope</dt><dd>Gold purchase flow, reusable components</dd></div>
+          <div><dt>Platform</dt><dd>Mobile app</dd></div>
+          <div><dt>Users</dt><dd>400K+ registered</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section style="padding-top:20px">
+      <div class="wrap">
+        <div class="kpis">
+          <div class="kpi reveal"><b class="gold" data-metric="successLift"></b><span>Purchase success rate, from <span data-metric="successBefore"></span> to <span data-metric="successAfter"></span></span></div>
+          <div class="kpi reveal"><b data-metric="liftRel"></b><span>More completed gold purchases from the same traffic</span></div>
+          <div class="kpi reveal"><b>−1</b><span>Manual step removed after payment</span></div>
+        </div>
+        <p class="note" data-placeholder-note>Illustrative figures. Final numbers will be updated from product analytics.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">Context</h2>
+        <div class="body reveal">
+          <p>When I joined, the product was designed around visuals and concept rather than the flows that drive revenue. My first move was to shift the team's attention to the core journeys and the pain points inside them.</p>
+          <p class="muted">The gold purchase flow was the most important one, and the data showed users leaking at two specific steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">The problem</h2>
+        <div class="body reveal">
+          <ul class="pain">
+            <li><span class="n">1</span><div><strong>A pre-invoice that looked final.</strong> <span class="muted">It was a full page that read like a receipt. Users thought the purchase was done and left, or got stuck on it.</span></div></li>
+            <li><span class="n">2</span><div><strong>A hidden "Complete purchase" step.</strong> <span class="muted">After paying, the app said "Deposit successful" and showed a button. If users didn't tap it, they only had rials in their wallet and no gold.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="flow-wrap reveal">
+          <div class="flow-top">
+            <div><p class="eyebrow" style="margin:0 0 6px">The flow</p><h3 style="font-size:24px">From five steps with two traps, to four clear ones</h3></div>
+            <div class="seg" data-seg="flow" role="group" aria-label="Compare flows">
+              <span class="thumb" aria-hidden="true"></span>
+              <button type="button" data-value="before" aria-pressed="true">Before</button>
+              <button type="button" data-value="after" aria-pressed="false">After</button>
+            </div>
+          </div>
+          <ol class="flow" data-flow style="list-style:none;padding:0;margin:0" aria-live="polite"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">The solution</h2>
+        <div class="body reveal">
+          <p><strong>1. The pre-invoice became a bottom sheet.</strong> <span class="muted">It sits on top of the buy screen, so it reads as a step, not an ending. It says clearly that it is not the final invoice, and it is a shared component we can drop into any flow where a user buys gold.</span></p>
+          <p><strong>2. Payment and purchase became one moment.</strong> <span class="muted">After the gateway, the success screen says "Your deposit arrived, we're buying your gold now" and completes the purchase automatically. The user understands what's happening and doesn't need to do anything else.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap proto">
+        <div class="proto-copy reveal">
+          <p class="eyebrow">Try it</p>
+          <h3>Tap through both versions</h3>
+          <p>Switch between the old and new flow and feel where users used to get lost.</p>
+          <div class="seg" data-seg="proto" role="group" aria-label="Prototype version" style="margin-top:12px">
+            <span class="thumb" aria-hidden="true"></span>
+            <button type="button" data-value="before" aria-pressed="false">Before</button>
+            <button type="button" data-value="after" aria-pressed="true">After</button>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="phone" data-proto>
+            <div class="screen">
+              <div class="sbar" aria-hidden="true"><span>9:41</span><span>●●●</span></div>
+
+              <div class="view" data-view="buy">
+                <h5>Buy gold</h5>
+                <p class="sub">18K gold · live price</p>
+                <div class="amount"><small>You pay</small><div>5,000,000 <em>IRT</em></div><small>≈ 0.71 g gold</small></div>
+                <div class="chips"><span>1M</span><span>5M</span><span>10M</span></div>
+                <button class="pbtn" type="button" data-act="buy">Buy gold</button>
+              </div>
+
+              <div class="view hidden invoice-full" data-view="invoice">
+                <h5>Invoice</h5>
+                <p class="sub">Order #20481</p>
+                <div class="rows">
+                  <div><span>Gold</span><span>0.71 g</span></div>
+                  <div><span>Price per gram</span><span>7,000,000</span></div>
+                  <div><span>Fee</span><span>25,000</span></div>
+                  <div class="total"><span>Total</span><span>5,025,000 IRT</span></div>
+                </div>
+                <div style="text-align:center"><span class="stamp">INVOICE</span></div>
+                <button class="pbtn" type="button" data-act="pay-old">Pay</button>
+              </div>
+
+              <div class="view hidden gateway" data-view="gateway">
+                <div class="spinner" aria-hidden="true"></div>
+                <h5>Bank gateway</h5>
+                <p class="sub">Processing payment…</p>
+              </div>
+
+              <div class="view hidden success" data-view="deposit-old">
+                <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+                <h5>Deposit successful</h5>
+                <p class="sub">5,025,000 IRT added to your wallet</p>
+                <p class="warn">No gold yet. Users had to notice and tap the button below.</p>
+                <button class="pbtn" type="button" data-act="complete-old">Complete purchase</button>
+                <button class="pbtn ghost" type="button" data-act="reset">Back to home</button>
+              </div>
+
+              <div class="view hidden success" data-view="done-old">
+                <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+                <h5>Gold purchased</h5>
+                <p class="sub">0.71 g added to your balance</p>
+                <button class="pbtn" type="button" data-act="reset">Done</button>
+              </div>
+
+              <div class="view hidden success" data-view="success-new">
+                <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></div>
+                <h5>Payment received</h5>
+                <p class="sub">We're buying your gold now</p>
+                <div class="buying">
+                  <div class="ln"><i></i>Deposit confirmed</div>
+                  <div class="ln"><i></i>Buying 0.71 g at live price</div>
+                  <div class="ln"><i></i>Gold added to your balance</div>
+                </div>
+                <button class="pbtn" type="button" data-act="reset">Done</button>
+              </div>
+
+              <div class="scrim"></div>
+              <div class="sheet" role="dialog" aria-label="Pre-invoice">
+                <div class="grab" aria-hidden="true"></div>
+                <span class="pill">Pre-invoice · not final</span>
+                <div class="rows">
+                  <div><span>Gold</span><span>≈ 0.71 g</span></div>
+                  <div><span>Fee</span><span>25,000</span></div>
+                  <div class="total"><span>You pay</span><span>5,025,000 IRT</span></div>
+                </div>
+                <p class="sub" style="margin:12px 0 14px">Final amount is set at live price after payment.</p>
+                <button class="pbtn gold" type="button" data-act="pay-new">Continue to payment</button>
+                <button class="pbtn ghost" type="button" data-act="close">Edit amount</button>
+              </div>
+            </div>
+          </div>
+          <p class="proto-hint" data-proto-hint aria-live="polite"></p>
+          <p style="text-align:center;margin:0"><button class="replay" type="button" onclick="document.querySelector('[data-act=reset]')?.click()">Restart</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">Results</h2>
+        <div class="body reveal">
+          <p>Measured on users who started a gold purchase, comparing equal windows before and after release.</p>
+          <div class="funnel" data-funnel></div>
+          <div class="legend"><span><i style="background:color-mix(in srgb,var(--muted) 45%,transparent)"></i>Before</span><span><i style="background:var(--accent)"></i>After</span></div>
+          <p style="margin-top:22px">Purchase success rose from <strong data-metric="successBefore"></strong> to <strong data-metric="successAfter"></strong>. The biggest change was after payment: users who paid but never got gold fell from <strong data-metric="paidNotBoughtBefore"></strong> to <strong data-metric="paidNotBoughtAfter"></strong>.</p>
+          <p class="note" data-placeholder-note>Illustrative figures. Final numbers will be updated from product analytics.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">What I learned</h2>
+        <div class="body reveal">
+          <p>The most expensive bugs in a checkout are not visual. They are moments where the interface says "done" too early. Naming each state honestly (pre-invoice, payment, purchase) did more for conversion than any visual polish.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap next-case">
+        <a class="big-link" href="bitpin.html" style="margin:0">Next: Bitpin case study →</a>
+        <a class="btn" href="index.html#contact">Work with me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="c-footer">© <span data-year></span> Siavash Ghanbari</footer>
+
+  <div class="cursor-pill" aria-hidden="true"></div>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

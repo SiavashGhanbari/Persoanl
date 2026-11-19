@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bitpin Toman Withdrawals · Siavash Ghanbari</title>
+  <meta name="description" content="Case study: making delayed toman withdrawals at Bitpin transparent, cutting withdrawal support tickets by 35%.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>(function(){var t=null;try{t=new URLSearchParams(location.search).get('theme')}catch(e){}if(t!=='dark'&&t!=='light'){try{t=localStorage.getItem('theme')}catch(e){}}if(t!=='dark'&&t!=='light'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}})()</script>
+  <link rel="icon" href="avatar.webp">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="pillnav-wrap">
+    <nav class="pillnav" aria-label="Primary">
+      <span class="pill-dot" aria-hidden="true"></span>
+      <span class="pill-sep" aria-hidden="true"></span>
+      <a href="index.html">home</a>
+      <a href="index.html#work">work</a>
+      <a href="index.html#contact">contact</a>
+      <span class="pill-sep" aria-hidden="true"></span>
+      <button class="pill-theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero">
+      <div class="wrap">
+        <a class="back" href="index.html"><span aria-hidden="true">←</span> All work</a>
+        <p class="eyebrow">Bitpin · Crypto exchange</p>
+        <h1>When money is late, say <span class="serif" style="color:#3b6fd8">when</span>: Bitpin's toman withdrawals</h1>
+        <p class="hero-lede" style="opacity:1;animation:none">Our bank closed the instant payout channel. Withdrawals that used to land in seconds now took hours, and users read the silence as lost money.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Product Designer</dd></div>
+          <div><dt>Scope</dt><dd>Toman withdrawal flow, status page</dd></div>
+          <div><dt>Platform</dt><dd>Mobile app and web</dd></div>
+          <div><dt>Team</dt><dd>Product, support, security</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section style="padding-top:20px">
+      <div class="wrap">
+        <div class="kpis">
+          <div class="kpi reveal"><b class="blue">−35%</b><span>Toman withdrawal support tickets</span></div>
+          <div class="kpi reveal"><b>~40%</b><span>Of those tickets were "Where is my money?"</span></div>
+          <div class="kpi reveal"><b>6</b><span>Steps of the payout now visible to users</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">Context</h2>
+        <div class="body reveal">
+          <p>Bitpin users were used to instant toman withdrawals: tap withdraw, and the money is in their bank account a moment later.</p>
+          <p class="muted">Then the bank shut down our instant payment channel. Every withdrawal had to go through the bank's PAYA batch cycle, which can take a few hours or up to a day. Nothing in the app changed to reflect that.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">The problem</h2>
+        <div class="body reveal">
+          <ul class="pain">
+            <li><span class="n">1</span><div><strong>An expectation the product could no longer keep.</strong> <span class="muted">Users expected money in seconds. When it didn't arrive, they assumed something had gone wrong.</span></div></li>
+            <li><span class="n">2</span><div><strong>No visibility after tapping withdraw.</strong> <span class="muted">The app showed "submitted" and nothing else. Users had no way to tell a normal delay from a real problem, so they called support or opened a ticket.</span></div></li>
+          </ul>
+          <p class="muted" style="margin-top:18px">About 40% of toman withdrawal tickets were some version of "Where is my money and why hasn't it arrived?". The rest were genuine system or bank issues, which are out of scope here.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="flow-wrap reveal">
+          <div class="flow-top">
+            <div><p class="eyebrow" style="margin:0 0 6px">The flow</p><h3 style="font-size:24px">From silence to a clear timeline</h3></div>
+            <div class="seg" data-seg="flow" role="group" aria-label="Compare flows">
+              <span class="thumb" aria-hidden="true"></span>
+              <button type="button" data-value="before" aria-pressed="true">Before</button>
+              <button type="button" data-value="after" aria-pressed="false">After</button>
+            </div>
+          </div>
+          <ol class="flow" data-flow style="list-style:none;padding:0;margin:0" aria-live="polite"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">The solution</h2>
+        <div class="body reveal">
+          <p><strong>1. Set the expectation before the tap.</strong> <span class="muted">A snackbar in the withdrawal flow tells users exactly when the money will arrive: "Withdraw now and it lands in your account by 16:30."</span></p>
+          <p><strong>2. Show where the money is.</strong> <span class="muted">A new withdrawal details page tracks every step: request received, security review, regulatory (FATA) check, sent to the bank, bank confirmation with an exact deposit time, and deposited.</span></p>
+          <p><strong>3. Tell users when to worry, and only then.</strong> <span class="muted">We can't see when the bank actually deposits the money. So if the promised time passes and it still hasn't arrived, the page invites the user to contact support. Before that, there's nothing to worry about, and the page says so.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap proto">
+        <div class="proto-copy reveal">
+          <p class="eyebrow">Try it</p>
+          <h3>Withdraw, then move the clock</h3>
+          <p>Tap withdraw, then drag the time slider to watch the payout move. Turn on "bank delay" to see what happens when the promised time passes.</p>
+          <div class="seg" data-seg="wproto" role="group" aria-label="Prototype version" style="margin-top:12px">
+            <span class="thumb" aria-hidden="true"></span>
+            <button type="button" data-value="before" aria-pressed="false">Before</button>
+            <button type="button" data-value="after" aria-pressed="true">After</button>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="phone" data-wproto>
+            <div class="screen">
+              <div class="sbar" aria-hidden="true"><span data-wclock>12:40</span><span>●●●</span></div>
+
+              <div class="view" data-view="form">
+                <h5>Withdraw toman</h5>
+                <p class="sub">To your registered bank account</p>
+                <div class="amount"><small>Amount</small><div>20,000,000 <em>IRT</em></div><small>IR•• •••• •••• 4821 · Mellat</small></div>
+                <div class="snack" data-snack><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Withdraw now and it lands in your account by <b>16:30</b> today.</span></div>
+                <button class="pbtn" type="button" data-act="withdraw">Withdraw</button>
+              </div>
+
+              <div class="view hidden" data-view="old">
+                <div class="success" style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:40px;gap:6px">
+                  <div class="spinner" aria-hidden="true"></div>
+                  <h5 style="margin-top:14px">Request submitted</h5>
+                  <p class="sub">Processing</p>
+                </div>
+                <div class="old-msg" data-oldmsg></div>
+                <button class="pbtn ghost" type="button" data-act="reset" style="margin-top:auto">Back</button>
+              </div>
+
+              <div class="view hidden" data-view="details">
+                <h5>Withdrawal details</h5>
+                <p class="sub">20,000,000 IRT · Mellat ••4821</p>
+                <ol class="wsteps" data-wsteps></ol>
+                <div class="eta-card" data-eta>Expected in your account by <b>16:30</b></div>
+                <div class="late-card" data-late hidden>
+                  <strong>It's past 16:30 and the money isn't in your account?</strong>
+                  <span>Banks sometimes run late. Contact support and we'll trace it.</span>
+                  <button class="pbtn" type="button">Contact support</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="time-ctrl" data-timectrl>
+            <label for="wtime">Time <output data-wtime-out>12:40</output></label>
+            <input id="wtime" type="range" min="0" max="320" value="0" step="5" disabled>
+            <label class="delay"><input type="checkbox" data-delay> Bank delay</label>
+          </div>
+          <p class="proto-hint" data-whint aria-live="polite"></p>
+          <p style="text-align:center;margin:0"><button class="replay" type="button" data-wreset>Restart</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">Results</h2>
+        <div class="body reveal">
+          <p>Toman withdrawal tickets dropped by <strong>35%</strong>. Since about 40% of tickets were "where is my money" questions, that means the large majority of them (roughly 35 of every 40) simply stopped coming in.</p>
+          <div class="ticket-bars" aria-label="Withdrawal tickets before and after">
+            <div class="tb-row"><span>Before</span><div class="tb"><i class="tb-where" style="--w:40%"></i><i class="tb-other" style="--w:60%"></i></div><b>100</b></div>
+            <div class="tb-row"><span>After</span><div class="tb"><i class="tb-where" style="--w:5%"></i><i class="tb-other" style="--w:60%"></i></div><b>65</b></div>
+          </div>
+          <div class="legend"><span><i style="background:#3b6fd8"></i>"Where is my money?"</span><span><i style="background:color-mix(in srgb,var(--muted) 45%,transparent)"></i>System and bank issues</span></div>
+          <p class="note">The split after launch is inferred from the 35% total drop, assuming system and bank issues stayed flat.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">What I learned</h2>
+        <div class="body reveal">
+          <p>We couldn't make the money faster. The bank decided that. What we could control was what users knew while they waited. A clear time and a visible next step turned a scary silence into a normal wait.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap next-case">
+        <a class="big-link" href="zarpin.html" style="margin:0">← Zarpin case study</a>
+        <a class="btn" href="index.html#contact">Work with me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="c-footer">© <span data-year></span> Siavash Ghanbari</footer>
+
+  <div class="cursor-pill" aria-hidden="true"></div>
+  <script>
+    window.PAGE_FLOWS = {
+      before: [
+        { t: 'Request withdrawal', d: 'User taps withdraw, expecting money in seconds.', icon: 'card' },
+        { t: '"Request submitted"', d: 'No time, no status. Just "processing".', icon: 'hourglass', drop: 'No idea when money arrives' },
+        { t: 'Hours of silence', d: 'The bank batch cycle runs in the background.', icon: 'clock' },
+        { t: 'Support ticket', d: 'User assumes the money is lost and contacts support.', icon: 'chat', drop: '~40% of withdrawal tickets' },
+      ],
+      after: [
+        { t: 'Request withdrawal + ETA snackbar', d: '"Withdraw now and it lands by 16:30."', icon: 'bell', fixed: 'Expectation set before the tap' },
+        { t: 'Security and FATA checks', d: 'Shown live on the withdrawal details page.', icon: 'shield' },
+        { t: 'Sent to bank, time confirmed', d: 'The bank confirms an exact deposit time.', icon: 'bank' },
+        { t: 'Deposited', d: 'The timeline completes.', icon: 'check' },
+        { t: 'Late? Then contact support', d: 'Support is offered only after the promised time passes.', icon: 'chat', fixed: 'Tickets only when needed' },
+      ],
+    };
+  </script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="bitpin.js"></script>
+</body>
+</html>
