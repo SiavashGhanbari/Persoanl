@@ -554,3 +554,6 @@ img.avatar { object-fit: cover; padding: 0; background: #0b1230; }
 [hidden] { display: none !important; }
 .phone { text-align: left; }
 @media (min-width: 681px) { .folder-front h3 { font-size: clamp(19px, 1.9vw, 23px); } .folder-front .metric b { font-size: clamp(28px, 3vw, 38px); } }
+
+/* JS smooth scrolling takes over from the native one */
+html.smooth-js { scroll-behavior: auto !important; }
