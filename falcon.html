@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Falcon Settlement Planner · Siavash Ghanbari</title>
+  <meta name="description" content="Case study: turning a 2–3 hour end-of-day settlement list into one click in Falcon, an internal accounting tool for a currency exchange.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>(function(){var t=null;try{t=new URLSearchParams(location.search).get('theme')}catch(e){}if(t!=='dark'&&t!=='light'){try{t=localStorage.getItem('theme')}catch(e){}}if(t!=='dark'&&t!=='light'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}})()</script>
+  <link rel="icon" href="avatar.webp">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="pillnav-wrap">
+    <nav class="pillnav" aria-label="Primary">
+      <span class="pill-dot" aria-hidden="true"></span>
+      <span class="pill-sep" aria-hidden="true"></span>
+      <a href="index.html">home</a>
+      <a href="index.html#work">work</a>
+      <a href="index.html#contact">contact</a>
+      <span class="pill-sep" aria-hidden="true"></span>
+      <button class="pill-theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero">
+      <div class="wrap">
+        <a class="back" href="index.html"><span aria-hidden="true">←</span> All work</a>
+        <p class="eyebrow">Falcon · Internal accounting tool</p>
+        <h1>From a 3-hour paper list to <span class="serif" style="color:var(--green-ink)">one click</span>: Falcon's settlement planner</h1>
+        <p class="hero-lede">Falcon was the in-house accounting and trading software of a currency exchange in Turkey, built so trade data could stay inside the company. Every evening, traders spent hours planning the next day's rial settlements by hand.</p>
+        <dl class="facts">
+          <div><dt>Role</dt><dd>Product Designer</dd></div>
+          <div><dt>Scope</dt><dd>Settlement planning, customer data model</dd></div>
+          <div><dt>Platform</dt><dd>Internal desktop web app</dd></div>
+          <div><dt>Users</dt><dd>Traders and accountants</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section style="padding-top:20px">
+      <div class="wrap">
+        <div class="kpis">
+          <div class="kpi reveal"><b class="green">1 click</b><span>To build tomorrow's settlement list, down from 2–3 hours</span></div>
+          <div class="kpi reveal"><b>0</b><span>Daily settlement errors, down from 2–3 a day</span></div>
+          <div class="kpi reveal"><b>0</b><span>Overtime paid for after-hours list building</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">Context</h2>
+        <div class="body reveal">
+          <p>Not every trade settled on the day it was made. A trader might sell dollars for rials and agree to settle in five days, at the customer's request or ours. So on top of the day's trades, every day also had a list of settlements that came due.</p>
+          <p class="muted">For rials this was constant, so it was where the work piled up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">The problem</h2>
+        <div class="body reveal">
+          <p>At the end of each day, traders sat down and wrote out, on paper, every settlement due tomorrow: the amount, the time and the payment method. The next day they messaged each customer on WhatsApp, one by one, to send the money.</p>
+          <ul class="pain">
+            <li><span class="n">1</span><div><strong>Matching debtors to creditors by hand.</strong> <span class="muted">If customer A owed us money and we owed customers B and C, traders didn't collect from A and pay out again. They told A to pay B and C directly, building a chain of settlements in their heads.</span></div></li>
+            <li><span class="n">2</span><div><strong>Every customer had rules.</strong> <span class="muted">Person or company, a settlement window (morning, noon or afternoon, because of bank transfer limits), and specific source or destination accounts. All of it had to be respected when pairing people up.</span></div></li>
+            <li><span class="n">3</span><div><strong>Tired people, after hours.</strong> <span class="muted">Building the list took 2–3 hours after the working day. Traders were paid overtime for it, and still made 2–3 mistakes a day, some of which turned into real losses or extra costs.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="flow-wrap reveal">
+          <div class="flow-top">
+            <div><p class="eyebrow" style="margin:0 0 6px">The flow</p><h3 style="font-size:24px">From an evening of paperwork to a reviewed list</h3></div>
+            <div class="seg" data-seg="flow" role="group" aria-label="Compare flows">
+              <span class="thumb" aria-hidden="true"></span>
+              <button type="button" data-value="before" aria-pressed="true">Before</button>
+              <button type="button" data-value="after" aria-pressed="false">After</button>
+            </div>
+          </div>
+          <ol class="flow" data-flow style="list-style:none;padding:0;margin:0" aria-live="polite"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">What I did</h2>
+        <div class="body reveal">
+          <p>I spotted the problem, proposed the feature and made the case for it in terms of cost: overtime, errors and the losses they caused.</p>
+          <p><strong>1. Turn tribal knowledge into data.</strong> <span class="muted">We added each customer's rules to Falcon as structured fields: person or company, settlement window, and allowed source and destination accounts. Collecting this for every active customer took about a month.</span></p>
+          <p><strong>2. Generate the list in one click.</strong> <span class="muted">Falcon finds everything due tomorrow, pairs debtors with creditors within each settlement window, and hands the trader a ready list: who pays whom, how much, when, and to which account.</span></p>
+          <p><strong>3. Keep a human in the loop on purpose.</strong> <span class="muted">We could have sent the WhatsApp messages automatically too. We chose not to: a trader reviews each instruction and sends it, so a wrong account number is caught before money moves.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap proto">
+        <div class="proto-copy reveal">
+          <p class="eyebrow">Try it</p>
+          <h3>Build tomorrow's settlement list</h3>
+          <p>"Before" is the evening on paper. "After" is Falcon: hit generate and watch it pair debtors with creditors inside each settlement window. Names and amounts are made up.</p>
+          <div class="seg" data-seg="fproto" role="group" aria-label="Demo version" style="margin-top:12px">
+            <span class="thumb" aria-hidden="true"></span>
+            <button type="button" data-value="before" aria-pressed="false">Before</button>
+            <button type="button" data-value="after" aria-pressed="true">After</button>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="appwin" data-falcon>
+            <div class="appwin-bar" aria-hidden="true"><i></i><i></i><i></i><span>Falcon · Settlements · Tomorrow</span></div>
+
+            <div class="appwin-body" data-fview="after">
+              <div class="due">
+                <div class="due-col">
+                  <h6>Owes us</h6>
+                  <ul data-debtors></ul>
+                </div>
+                <div class="due-col">
+                  <h6>We owe</h6>
+                  <ul data-creditors></ul>
+                </div>
+              </div>
+              <button class="gen-btn" type="button" data-generate>Generate settlement list</button>
+              <ol class="plan" data-plan aria-live="polite"></ol>
+              <p class="balance" data-balance hidden>✓ Balanced: every rial owed is matched within its window</p>
+            </div>
+
+            <div class="appwin-body paper-view" data-fview="before" hidden>
+              <div class="paper" data-paper>
+                <p class="paper-head">Tomorrow's settlements</p>
+                <ol data-paper-lines></ol>
+              </div>
+              <div class="paper-meta"><span>After hours</span><b data-paper-clock>0:00</b></div>
+              <button class="gen-btn ghost" type="button" data-paper-start>Start the evening</button>
+            </div>
+          </div>
+          <p class="proto-hint" data-fhint aria-live="polite"></p>
+          <p style="text-align:center;margin:0"><button class="replay" type="button" data-freset>Restart</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">Results</h2>
+        <div class="body reveal">
+          <div class="compare">
+            <div><span class="eyebrow">Before</span><b>2–3 h</b><span class="muted">every evening, by hand, paid as overtime</span></div>
+            <div><span class="eyebrow">After</span><b class="green">1 click</b><span class="muted">plus a quick review before sending</span></div>
+          </div>
+          <p style="margin-top:22px">Traders went home on time, the company stopped paying overtime for list building, and daily settlement errors went from 2–3 a day to zero, along with the losses and extra fees they used to cause.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cs-grid">
+        <h2 class="reveal">What I learned</h2>
+        <div class="body reveal">
+          <p>The feature itself was simple. The hard part was seeing that a routine everyone accepted as "just part of the job" was a product problem with a real cost. And full automation isn't always the goal: keeping one human check where money moves was the right call.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap next-case">
+        <a class="big-link" href="zarpin.html" style="margin:0">Next: Zarpin case study →</a>
+        <a class="btn" href="index.html#contact">Work with me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="c-footer">© <span data-year></span> Siavash Ghanbari</footer>
+
+  <div class="cursor-pill" aria-hidden="true"></div>
+  <script>
+    window.PAGE_FLOWS = {
+      before: [
+        { t: 'End of day', d: 'Trades are done, but tomorrow’s settlements still need planning.', icon: 'clock' },
+        { t: 'List on paper', d: 'Amount, time and method for every settlement due tomorrow.', icon: 'doc', drop: '2–3 hours, after hours' },
+        { t: 'Match in their heads', d: 'Pair debtors with creditors, respecting each customer’s rules.', icon: 'list', drop: '2–3 errors a day' },
+        { t: 'WhatsApp, one by one', d: 'Next morning, message every customer with accounts to pay.', icon: 'chat' },
+      ],
+      after: [
+        { t: 'Customer rules in Falcon', d: 'Person or company, settlement window, allowed accounts.', icon: 'shield', fixed: 'Collected once' },
+        { t: 'Generate', d: 'Falcon finds tomorrow’s settlements and pairs debtors with creditors.', icon: 'check', fixed: 'One click' },
+        { t: 'Trader reviews', d: 'A person checks each instruction before money moves.', icon: 'list' },
+        { t: 'Send on WhatsApp', d: 'Copy each ready-made message and send it.', icon: 'chat' },
+      ],
+    };
+  </script>
+  <script src="smooth.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="falcon.js"></script>
+</body>
+</html>
